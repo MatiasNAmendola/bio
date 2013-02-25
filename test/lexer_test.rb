@@ -24,8 +24,8 @@ class LexerTest < Test::Unit::TestCase
   end
 
   def test_indent
-    code = File.open("test/code/example_1.bio", "rb").read
-    tokens = eval File.open("test/code/example_1.tokens", "rb").read
+    code = load_test_code "example_1.bio"
+    tokens = eval load_test_code "example_1.tokens"
     assert_equal tokens, Lexer.new.tokenize(code)
   end
 end

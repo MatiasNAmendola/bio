@@ -19,4 +19,8 @@ class Test::Unit::TestCase
   def assert_prints(expected, &block)
     assert_equal expected, capture_streams(&block)
   end
+
+  def load_test_code filename
+    File.open("test/code/#{filename}", "rb").read
+  end
 end
