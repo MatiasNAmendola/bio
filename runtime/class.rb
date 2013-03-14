@@ -1,15 +1,21 @@
 class BioClass < BioObject
   attr_reader :runtime_methods
 
-  def initialize
-    @runtime_methods = {}
+  def initialize superclass=nil
+    @runtime_methods, @runtime_superclass = {}, superclass
     runtime_class = Runtime["Class"] if defined? Runtime
     super runtime_class
   end
 
   def lookup method_name
     method = @runtime_methods[method_name]
-    raise "Method not found: #{method_name}" unless method
+    unless method
+      if @runtime_superclass
+        return @runtime_superclass.lookup method_name
+      else
+        raise "Method not found: #{method_name}"
+      end
+    end
 
     method
   end
