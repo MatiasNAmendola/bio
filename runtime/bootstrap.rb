@@ -16,16 +16,4 @@ Runtime["true"] = Runtime["TrueClass"].new_with_value true
 Runtime["false"] = Runtime["FalseClass"].new_with_value false
 Runtime["nil"] = Runtime["NilClass"].new_with_value nil
 
-Runtime["Class"].runtime_methods["new"] = proc do |receiver,arguments|
-  receiver.new
-end
-
-Runtime["Object"].runtime_methods["print"] = proc do |receiver,arguments|
-  puts arguments.first.ruby_value
-  Runtime["nil"]
-end
-
-Runtime["Number"].runtime_methods["+"] = proc do |receiver,arguments|
-  result = receiver.ruby_value + arguments.first.ruby_value
-  Runtime["Number"].new_with_value result
-end
+Dir.glob("runtime/objects/*").each { |file| require file }
