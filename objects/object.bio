@@ -1,0 +1,4 @@
+class Object
+  def print
+    Kernel.print "blarg"
+    nil

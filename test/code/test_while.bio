@@ -1,0 +1,7 @@
+var = 0
+switch = true
+while switch
+  var = var + 1
+  switch = false
+
+var
