@@ -1,0 +1,7 @@
+class Bio
+   def does_it_work
+     "yeah!"
+
+awesome_object = Bio.new
+if awesome_object
+  print(awesome_object.does_it_work)

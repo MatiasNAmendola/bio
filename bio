@@ -1,0 +1,35 @@
+#! /usr/bin/env ruby
+# Bio Programming Language
+
+require "interpreter"
+require "readline"
+
+interpreter = Interpreter.new
+
+if file = ARGV.first
+  interpreter.eval File.read(file)
+else
+  puts "BioLab! Type 'exit' to quit"
+  loop do
+    line = Readline::readline ">> "
+    Readline::HISTORY.push line
+    exit if line == "exit"
+    begin
+      value = interpreter.eval line
+    rescue Racc::ParseError => e
+      if e.message == "\nparse error on value \"$\" ($end)"
+        loop do
+          sub_line = Readline::readline "*> "
+          Readline::HISTORY.push sub_line
+          exit if sub_line == "exit"
+          line += "\n#{sub_line}"
+          value = interpreter.eval(line) rescue Racc::ParseError
+          break if sub_line == ""
+        end
+      else
+        raise e
+      end
+    end
+    puts "=> #{value.ruby_value.inspect}" unless line == ""
+  end
+end

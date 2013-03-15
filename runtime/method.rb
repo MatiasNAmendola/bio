@@ -1,4 +1,4 @@
-class BioMethod
+class BioMethod < BioObject
   def initialize params, body
     @params, @body = params, body
   end
