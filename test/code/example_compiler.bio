@@ -1,0 +1,4 @@
+def say_it
+  x = "This is compiled!"
+  print(x)
+say_it
