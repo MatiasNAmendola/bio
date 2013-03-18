@@ -30,7 +30,10 @@ else
       else
         raise e
       end
+    rescue Exception => e
+      puts e.exception
+      puts e.backtrace
     end
-    puts "=> #{value.ruby_value.inspect}" unless line == ""
+    puts "=> #{value.ruby_value.inspect}" unless line == "" rescue nil
   end
 end
