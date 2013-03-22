@@ -15,7 +15,7 @@ class Compiler
   INT = LLVM::Int
 
   def initialize mod=nil, function=nil
-    @module = mod || LLVM::Module.new("awesome")
+    @module = mod || LLVM::Module.new("bio")
     @locals = {}
     @function = function || @module.functions.named("main") || @module.functions.add("main", [], LLVM.Void)
     @builder = LLVM::Builder.new
