@@ -6,7 +6,7 @@ require "llvm/execution_engine"
 require "llvm/transforms/scalar"
 require "llvm/transforms/ipo"
 
-LLVM.init_x86
+LLVM.init_jit
 
 class Compiler
   attr_reader :locals
@@ -32,7 +32,7 @@ class Compiler
   end
 
   def new_string value
-    @builder.global_string_value(value)
+    @builder.global_string_pointer(value)
   end
 
   def new_number value
@@ -63,7 +63,7 @@ class Compiler
 
   def optimize
     @module.verify!
-    pass_manager = LLVM::Passenger.new @engine
+    pass_manager = LLVM::PassManager.new @engine
     pass_manager.simplifycfg!
     pass_manager.mem2reg!
     pass_manager.gdce!
@@ -79,7 +79,7 @@ class Compiler
 
   private
   def define_external_functions
-    fun = @module.functions.add("printf", [LLVM::Type.pointer(PCHAR)], INT, { :varargs => true })
+    fun = @module.functions.add("printf", [PCHAR], INT, { :varargs => true })
     fun.linkage = :external
 
     fun = @module.functions.add("puts", [PCHAR], INT)
