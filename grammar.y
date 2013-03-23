@@ -18,7 +18,7 @@ token INDENT DEDENT
 prechigh
   left  '.'
   right '!'
-  left  '*' '/'
+  left  '*' '/' '%'
   left  '+' '-'
   left  '>' '>=' '<' '<='
   left  '==' '!='
