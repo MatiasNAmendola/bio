@@ -9,6 +9,7 @@ token NEWLINE
 token NUMBER
 token STRING
 token TRUE FALSE NIL
+token AND OR
 token IDENTIFIER
 token CONSTANT
 token INDENT DEDENT
@@ -118,6 +119,8 @@ rule
   | Expression '-' Expression     { result = CallNode.new(val[0], val[1], [val[2]]) }
   | Expression '*' Expression     { result = CallNode.new(val[0], val[1], [val[2]]) }
   | Expression '/' Expression     { result = CallNode.new(val[0], val[1], [val[2]]) }
+  | Expression AND Expression     { result = CallNode.new(val[0], val[1], [val[2]]) }
+  | Expression OR  Expression     { result = CallNode.new(val[0], val[1], [val[2]]) }
 
   # Unary Operators
   | '!' Expression    { result = CallNode.new(val[1], val[0], []) }

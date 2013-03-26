@@ -1,6 +1,6 @@
 class Lexer
   attr_accessor :position, :tokens, :current_indent, :indent_stack
-  KEYWORDS = ["class", "def", "if", "while", "true", "false", "nil"]
+  KEYWORDS = ["class", "def", "if", "while", "true", "false", "nil", "or", "and"]
 
   def initialize
     @position = 0
