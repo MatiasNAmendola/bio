@@ -48,4 +48,9 @@ class LogicalOperatorTest < Test::Unit::TestCase
     assert_equal true, Interpreter.new.eval("1 == 1").ruby_value
     assert_equal false, Interpreter.new.eval("1 == 2").ruby_value
   end
+
+  def test_not_equals
+    assert_equal false, Interpreter.new.eval("1 != 1").ruby_value
+    assert_equal true, Interpreter.new.eval("1 != 2").ruby_value
+  end
 end

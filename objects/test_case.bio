@@ -1,0 +1,5 @@
+class TestCase
+  def assert(case_one, case_two)
+    case_one == case_two
+  def refute(case_one, case_two)
+    case_one != case_two
