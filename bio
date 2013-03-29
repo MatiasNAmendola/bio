@@ -3,6 +3,7 @@
 
 require "interpreter"
 require "readline"
+require "pry"
 
 interpreter = Interpreter.new
 Dir.glob("objects/*").each { |file| interpreter.eval(File.read(file)) }

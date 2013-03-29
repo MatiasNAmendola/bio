@@ -1,0 +1,7 @@
+class NewClass
+  def self_test
+    self.test_method
+  def test_method
+    "SUCCESS"
+
+NewClass.new.self_test

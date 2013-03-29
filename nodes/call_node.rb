@@ -4,7 +4,11 @@ class CallNode
       context.locals[method]
     else
       if receiver
-        value = receiver.eval context
+        if receiver.kind_of?(CallNode) and receiver.receiver.nil? and receiver.method == "self"
+          value = context.current_self
+        else
+          value = receiver.eval context
+        end
       else
         value = context.current_self
       end
