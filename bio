@@ -35,6 +35,6 @@ else
       puts e.exception
       puts e.backtrace
     end
-    puts "=> #{value.ruby_value.inspect}" unless line == "" rescue nil
+    puts "=> #{value.printable}" unless line == "" rescue nil
   end
 end

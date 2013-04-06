@@ -6,6 +6,10 @@ class InterpreterTest < Test::Unit::TestCase
     assert_equal 1, Interpreter.new.eval("1").ruby_value
   end
 
+  def test_array
+    assert_equal [1,2], Interpreter.new.eval("[1,2]").ruby_value
+  end
+
   def test_true
     assert_equal true, Interpreter.new.eval("true").ruby_value
   end

@@ -6,6 +6,10 @@ class LexerTest < Test::Unit::TestCase
     assert_equal [[:NUMBER, 1]], Lexer.new.tokenize("1")
   end
 
+  def test_array
+    assert_equal [[:ARRAY, "1,2"]], Lexer.new.tokenize("[1,2]")
+  end
+
   def test_string
     assert_equal [[:STRING, "hi"]], Lexer.new.tokenize('"hi"')
   end
@@ -29,3 +33,4 @@ class LexerTest < Test::Unit::TestCase
     assert_equal tokens, Lexer.new.tokenize(code)
   end
 end
+

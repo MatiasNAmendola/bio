@@ -28,3 +28,4 @@ class BioClass < BioObject
     BioObject.new self, value
   end
 end
+

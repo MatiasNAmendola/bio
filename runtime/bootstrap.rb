@@ -7,6 +7,7 @@ Runtime = Context.new(object_class.new)
 
 Runtime["Class"] = bio_class
 Runtime["Object"] = object_class
+Runtime["Array"] = BioClass.new(Runtime["Object"])
 Runtime["Number"] = BioClass.new(Runtime["Object"])
 Runtime["String"] = BioClass.new(Runtime["Object"])
 Runtime["TrueClass"] = BioClass.new(Runtime["Object"])

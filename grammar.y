@@ -8,6 +8,7 @@ token CLASS
 token NEWLINE
 token NUMBER
 token STRING
+token ARRAY
 token TRUE FALSE NIL
 token AND OR
 token IDENTIFIER
@@ -81,9 +82,10 @@ rule
   Literal:
     NUMBER                        { result = NumberNode.new(val[0]) }
   | STRING                        { result = StringNode.new(val[0]) }
-  | TRUE                          { result = TrueNode.new }
-  | FALSE                         { result = FalseNode.new }
-  | NIL                           { result = NilNode.new }
+  | ARRAY                         { result = ArrayNode.new(val)     }
+  | TRUE                          { result = TrueNode.new           }
+  | FALSE                         { result = FalseNode.new          }
+  | NIL                           { result = NilNode.new            }
   ;
   
   # A method call

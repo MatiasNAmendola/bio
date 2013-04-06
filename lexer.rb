@@ -23,6 +23,8 @@ class Lexer
         tokenize_number number
       elsif string = chunk[/\A"(.*?)"/, 1]
         tokenize_string string
+      elsif array = chunk[/\A\[(.*?)\]/, 1]
+        tokenize_array array
       elsif indent = chunk[/\A\n( *)/m, 1]
         tokenize_indent indent
       elsif operator = chunk[/\A(\|\||&&|==|!=|<=|>=)/, 1]
@@ -65,6 +67,12 @@ private
     @tokens << [:STRING, string]
 
     @position += string.size + 2
+  end
+
+  def tokenize_array array
+    @tokens << [:ARRAY, array]
+
+    @position += array.size + 2
   end
 
   def tokenize_indent indent
