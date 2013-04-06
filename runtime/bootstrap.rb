@@ -18,3 +18,4 @@ Runtime["false"] = Runtime["FalseClass"].new_with_value false
 Runtime["nil"] = Runtime["NilClass"].new_with_value nil
 
 Dir.glob("runtime/objects/*").each { |file| require file }
+

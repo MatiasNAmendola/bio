@@ -14,6 +14,7 @@ Runtime["Object"].runtime_methods["!="] = proc do |receiver,arguments|
 end
 
 Runtime["Object"].runtime_methods["methods"] = proc do |receiver,arguments|
-  result = receiver.runtime_methods.first
+  result = receiver.runtime_methods
+  Runtime["Array"].new_with_value(result)
 end
 

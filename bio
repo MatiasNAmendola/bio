@@ -1,9 +1,9 @@
 #! /usr/bin/env ruby
 # Bio Programming Language
 
+require "pry"
 require "interpreter"
 require "readline"
-require "pry"
 
 interpreter = Interpreter.new
 Dir.glob("objects/*").each { |file| interpreter.eval(File.read(file)) }
@@ -38,3 +38,4 @@ else
     puts "=> #{value.printable}" unless line == "" rescue nil
   end
 end
+

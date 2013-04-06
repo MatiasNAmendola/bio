@@ -3,6 +3,13 @@ class BioObject
 
   def initialize runtime_class, ruby_value=self
     @runtime_class, @ruby_value = runtime_class, ruby_value
+    if @ruby_value.respond_to?(:each)
+      new_value = []
+      @ruby_value.each do |val|
+        new_value << Runtime["String"].new_with_value(val)
+      end
+      @ruby_value = new_value
+    end
   end
 
   def call method, arguments=[]
