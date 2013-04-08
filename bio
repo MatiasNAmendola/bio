@@ -13,7 +13,7 @@ if file = ARGV.first
 else
   puts "BioLab! Type 'exit' to quit"
   loop do
-    line = Readline::readline ">> "
+    line = Readline::readline "Bio->> "
     Readline::HISTORY.push line
     exit if line == "exit"
     begin

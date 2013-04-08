@@ -154,6 +154,7 @@ rule
   # Class definition
   Class:
     CLASS CONSTANT Block          { result = ClassNode.new(val[1], val[2]) }
+  | CLASS CONSTANT "(" CONSTANT ")" Block          { result = ClassNode.new(val[1], val[2]) }
   ;
   
   # if block

@@ -7,7 +7,9 @@ class InterpreterTest < Test::Unit::TestCase
   end
 
   def test_array
-    assert_equal [1,2], Interpreter.new.eval("[1,2]").ruby_value
+    test_arr = Interpreter.new.eval("[1,2]").ruby_value
+    assert_equal 1, test_arr.first.ruby_value
+    assert_equal 2, test_arr.last.ruby_value
   end
 
   def test_true

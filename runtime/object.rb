@@ -6,9 +6,9 @@ class BioObject
     if @ruby_value.respond_to?(:each)
       new_value = []
       @ruby_value.each do |val|
-        new_value << Runtime["String"].new_with_value(val)
+        new_value.push(Runtime["String"].new_with_value(val)) if val.kind_of? String
       end
-      @ruby_value = new_value
+      @ruby_value = new_value unless new_value.empty?
     end
   end
 
