@@ -12,6 +12,12 @@ class InterpreterTest < Test::Unit::TestCase
     assert_equal 2, test_arr.last.ruby_value
   end
 
+  def test_inheritance
+    code = load_test_code "example_inheritance.bio"
+    return_value = Interpreter.new.eval(code).ruby_value
+    assert_equal true, return_value
+  end
+
   def test_true
     assert_equal true, Interpreter.new.eval("true").ruby_value
   end

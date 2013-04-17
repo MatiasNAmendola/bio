@@ -27,7 +27,7 @@ class Lexer
         tokenize_array array
       elsif indent = chunk[/\A\n( *)/m, 1]
         tokenize_indent indent
-      elsif operator = chunk[/\A(\|\||&&|==|!=|<=|>=)/, 1]
+      elsif operator = chunk[/\A(\|\||&&|==|!=|<=|>=|=>)/, 1]
         tokenize_operator operator
       elsif chunk.match(/\A /)
         remove_whitespace

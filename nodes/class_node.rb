@@ -3,7 +3,7 @@ class ClassNode
     bio_class = context[name]
 
     unless bio_class
-      bio_class = BioClass.new
+      bio_class = BioClass.new Runtime[super_class]
       context[name] = bio_class
     end
 

@@ -153,8 +153,8 @@ rule
   
   # Class definition
   Class:
-    CLASS CONSTANT Block          { result = ClassNode.new(val[1], val[2]) }
-  | CLASS CONSTANT "(" CONSTANT ")" Block          { result = ClassNode.new(val[1], val[2]) }
+    CLASS CONSTANT "=>" CONSTANT Block          { result = ClassNode.new(val[1], val[4], val[3]) }
+  | CLASS CONSTANT Block          { result = ClassNode.new(val[1], val[2], nil) }
   ;
   
   # if block

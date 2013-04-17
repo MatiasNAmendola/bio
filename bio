@@ -21,7 +21,7 @@ else
     rescue Racc::ParseError => e
       if e.message == "\nparse error on value \"$\" ($end)"
         loop do
-          sub_line = Readline::readline "*> "
+          sub_line = Readline::readline "    *> "
           Readline::HISTORY.push sub_line
           exit if sub_line == "exit"
           line += "\n#{sub_line}"

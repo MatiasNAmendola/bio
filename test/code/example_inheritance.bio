@@ -1,0 +1,9 @@
+class TestClass
+  def test
+    true
+
+class NextTestClass => TestClass
+  def blarg
+    "blarg"
+
+NextTestClass.new.test
