@@ -27,5 +27,15 @@ class BioClass < BioObject
   def new_with_value value
     BioObject.new self, value
   end
+
+  def runtime_methods_list
+    if @runtime_superclass.nil?
+      super_methods = []
+    else
+      super_methods = @runtime_superclass.runtime_methods_list
+    end
+
+    @runtime_methods.keys + super_methods
+  end
 end
 

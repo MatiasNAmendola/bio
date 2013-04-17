@@ -1,0 +1,5 @@
+class NewClass
+  def test
+    true
+
+NewClass.new.methods

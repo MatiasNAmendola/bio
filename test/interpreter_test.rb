@@ -31,6 +31,13 @@ class InterpreterTest < Test::Unit::TestCase
     assert_equal "yah!", Interpreter.new.eval(code).ruby_value
   end
 
+  def test_methods
+    code1 = load_test_code "example_methods_1.bio"
+    code2 = load_test_code "example_methods_2.bio"
+    assert_equal Array, Interpreter.new.eval(code1).ruby_value.class
+    assert_equal Array, Interpreter.new.eval(code2).ruby_value.class
+  end
+
   def test_reopen_class
     code = load_test_code "example_reopen_class.bio"
     assert_equal 10, Interpreter.new.eval(code).ruby_value

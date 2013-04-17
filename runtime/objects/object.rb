@@ -13,8 +13,3 @@ Runtime["Object"].runtime_methods["!="] = proc do |receiver,arguments|
   result ? Runtime["TrueClass"].new_with_value(true) : Runtime["FalseClass"].new_with_value(false)
 end
 
-Runtime["Object"].runtime_methods["methods"] = proc do |receiver,arguments|
-  result = receiver.runtime_methods
-  Runtime["Array"].new_with_value(result)
-end
-

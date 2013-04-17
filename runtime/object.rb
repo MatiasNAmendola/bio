@@ -3,6 +3,12 @@ class BioObject
 
   def initialize runtime_class, ruby_value=self
     @runtime_class, @ruby_value = runtime_class, ruby_value
+    unless @runtime_class.nil?
+      @runtime_class.runtime_methods["methods"] = proc do |receiver,arguments|
+        result = @runtime_class.runtime_methods_list
+        Runtime["Array"].new_with_value(result)
+      end
+    end
     if @ruby_value.respond_to?(:each)
       new_value = []
       @ruby_value.each do |val|
@@ -16,8 +22,12 @@ class BioObject
     @runtime_class.lookup(method).call(self, arguments)
   end
 
-  def runtime_methods
-    @runtime_class.runtime_methods.keys
+  def runtime_methods_list
+    if @ruby_value.kind_of? BioClass
+      @ruby_value.runtime_methods_list
+    else
+      @runtime_class.runtime_methods_list
+    end
   end
 
   def printable
