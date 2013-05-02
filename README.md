@@ -10,3 +10,4 @@ Syntax
         "baz"
 
     Foo.new.bar   #=> "baz"
+
