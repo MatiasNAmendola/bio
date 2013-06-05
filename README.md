@@ -11,3 +11,4 @@ Syntax
 
     Foo.new.bar   #=> "baz"
 
+
